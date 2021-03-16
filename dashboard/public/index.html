@@ -16,6 +16,15 @@
     <meta name="theme-color" content="#000000">
     <title>KodaDot - Polkadot / Kusama NFT Explorer</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Archivo&family=Chivo:ital,wght@0,400;1,900&display=swap');
+      html {
+        background-color: black !important;
+        color: white;
+        font-family: 'Archivo', sans-serif;
+      }
+      body {
+        font-family: 'Chivo', sans-serif !important;
+      }
       html,
       body,
       div#app,
@@ -23,13 +32,14 @@
         height: 100%;
         margin: 0;
         width: 100%;
+        background-color: black;
       }
 
       .preloader-container {
         position: absolute;
         width: 100vw;
         height: 100vh;
-        background-color: #fefefe;
+        background-color: black;
         z-index: 1001;
         font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
       }
@@ -43,7 +53,6 @@
         content: ' _';
         animation: blink 0.3s infinite;
       }
-
       @keyframes blink {
         from {
           color: black;

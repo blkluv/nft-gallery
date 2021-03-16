@@ -1,7 +1,7 @@
 <template>
   <div class="container is-max-desktop">
     <Navbar v-if="isNavbarVisible"/>
-    <router-view id="routerview" />
+    <router-view id="routerview" style="margin-top:80px"/>
   </div>
 </template>
 
