@@ -45,9 +45,13 @@ export default class GalleryCard extends Vue {
 }
 </script>
 
-<style scoped>
+<style>
 .card.nft-card {
   padding: 1em !important;
+  height: 100%;
+  border: solid 1px gray;
+}
+.card-content{
   height: 100%;
 }
 .nft-card__skeleton {
@@ -57,7 +61,51 @@ export default class GalleryCard extends Vue {
   justify-content: space-between;
   cursor: pointer;
 }
-
+.collectible-card__price-item-container {
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 8px;
+}
+.collectible-card__price-item {
+    width: 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.collectible-card__price-number {
+    font-family: "Founders Grotesk Regular";
+    font-size: 18px;
+    margin-bottom: 0;
+    word-wrap: break-word;
+    color: #2d8e69;
+}
+.collectible-card__price-text {
+    font-family: "Founders Grotesk Regular";
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 12px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    color: #005c3a;
+}
+.collectible-card__price-username {
+    display: inline-block;
+    padding-left: 2px;
+    color: #005c3a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 85px;
+}
+a {
+    text-decoration: none;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
 a {
   color: grey;
 }
