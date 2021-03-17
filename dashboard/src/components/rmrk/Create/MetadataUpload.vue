@@ -7,7 +7,7 @@
           alt="First NFT market explorer on Kusama and Polkadot"
           class="ico-media"
         />
-        <span class="file-label" style="margin-left:15px">{{ label }}</span>
+        <span class="file-label" style="margin-left:35px;letter-spacing:1.1px">{{ label }}</span>
       </span>
       <span class="file-name" v-if="file">
         {{ file.name }}
@@ -53,7 +53,7 @@ export default class extends Vue {
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 5px;
+  left: 10px;
 }
 
 </style>

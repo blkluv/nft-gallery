@@ -59,6 +59,7 @@
         :disabled="disabled"
         :loading="isLoading"
         outlined
+        style="width:167px"
       >
         <img src="@/assets/plane_dark.png" alt="" class="ico-plan" />{{
           $t("create collection")
@@ -250,7 +251,7 @@ fieldset[disabled] .button.is-primary.is-outlined {
   box-shadow: none;
   color: #000;
   span {
-    margin-left: 10px;
+    margin-left: 20px;
     font-family: "Archivo", sans-serif !important;
   }
 }
