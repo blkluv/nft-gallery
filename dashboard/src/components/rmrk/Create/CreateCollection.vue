@@ -2,15 +2,17 @@
   <div>
     <b-loading is-full-page v-model="isLoading" :can-cancel="true"></b-loading>
     <div class="box">
-      <p class="title is-size-3" style="text-align:center">
+      <p class="title is-size-3" style="text-align: center">
         {{ $t("CREATE SOMETHING YOU LUV") }}
       </p>
-      <div>
-        {{ $t("computed id") }}: <b>{{ rmrkId }}</b>
-      </div>
       <AccountSelect :label="$i18n.t('Account')" v-model="accountId" />
-      <b-field grouped :label="$i18n.t('Name')" >
-        <b-input v-model="rmrkMint.name" expanded placeholder="e.g Redeemable ticket for entry"></b-input>
+      <b-field grouped :label="$i18n.t('Name')">
+        <b-input
+          v-model="rmrkMint.name"
+          expanded
+          placeholder="e.g Redeemable ticket for entry"
+          style="font-family: 'Archivo', sans-serif !important"
+        ></b-input>
         <Tooltip :label="$i18n.t('Owner address of minted art')" />
       </b-field>
       <b-field :label="$i18n.t('Maximum NFTs in collection')">
@@ -24,9 +26,6 @@
         <b-input v-model="rmrkMint.symbol" expanded></b-input>
         <Tooltip :label="$i18n.t('Symbol you want to trade it under')" />
       </b-field>
-      <p class="title">
-        {{ $t("content") }}
-      </p>
       <b-switch v-model="uploadMode" passive-type="is-dark" :rounded="false">
         {{ uploadMode ? "Upload to LUV NFT" : "IPFS hash of your content" }}
       </b-switch>
@@ -36,12 +35,17 @@
             v-model="meta.description"
             maxlength="200"
             type="textarea"
+            class="text-placehoder"
             placeholder="e.g After perchasing your ticket will be located inside your digital wallet"
           ></b-input>
         </b-field>
         <MetadataUpload v-model="image" />
         <b-field :label="$i18n.t('Multimedia data')">
-          <b-input v-model="meta.image_data" placeholder='Change this section to say "PNG,GIF,WEBP,MP4 or MP3,Max 30m'></b-input>
+          <b-input
+            v-model="meta.image_data"
+            placeholder="PNG,GIF,WEBP,MP4 or MP3,Max 30m"
+            class="text-placehoder"
+          ></b-input>
         </b-field>
       </template>
 
@@ -247,6 +251,7 @@ fieldset[disabled] .button.is-primary.is-outlined {
   color: #000;
   span {
     margin-left: 10px;
+    font-family: "Archivo", sans-serif !important;
   }
 }
 .ico-plan {
@@ -254,5 +259,29 @@ fieldset[disabled] .button.is-primary.is-outlined {
   height: 20px;
   position: absolute;
   left: 5px;
+}
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-color: black !important;
+}
+.control {
+  .input {
+    font-family: "Archivo", sans-serif !important;
+  }
+  .textarea {
+    font-family: "Archivo", sans-serif !important;
+  }
+}
+.b-numberinput input[type="number"] {
+  text-align: unset;
+}
+.b-tooltip.is-primary.is-light .tooltip-content {
+  background: #000000;
+  color: #beef00;
+  font-family: "Archivo", sans-serif !important;
+}
+.file.is-primary:hover .file-cta, .file.is-primary.is-hovered .file-cta {
+    background-color: #beef00;
+    border-color: transparent;
+    color: #fff;
 }
 </style>
