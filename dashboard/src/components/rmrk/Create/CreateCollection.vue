@@ -2,7 +2,7 @@
   <div>
     <b-loading is-full-page v-model="isLoading" :can-cancel="true"></b-loading>
     <div class="box">
-      <p class="title is-size-3" style="text-align: center">
+      <p class="title is-size-3" style="text-align: center;color:white">
         {{ $t("CREATE SOMETHING YOU LUV") }}
       </p>
       <AccountSelect :label="$i18n.t('Account')" v-model="accountId" />
@@ -228,7 +228,7 @@ export default class CreateCollection extends Mixins(
 </script>
 <style lang= "scss">
 .box {
-  background-color: #bfbfcc;
+  background-color: #000000;
 }
 .button.is-primary {
   background-color: #beef00 !important;
@@ -284,5 +284,8 @@ fieldset[disabled] .button.is-primary.is-outlined {
     background-color: #beef00;
     border-color: transparent;
     color: #fff;
+}
+.switch:not(.has-left-label) .control-label{
+  color: white;
 }
 </style>
