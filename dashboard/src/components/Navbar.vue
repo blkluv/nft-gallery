@@ -4,7 +4,7 @@
     shadow
     spaced
     wrapper-class="container"
-    style="background-color: #000000"
+    style="background-color: #000000;box-shadow:unset"
     :close-on-click="false"
   >
     <template #brand>

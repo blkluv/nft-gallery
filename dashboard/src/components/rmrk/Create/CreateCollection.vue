@@ -3,13 +3,11 @@
     <b-loading is-full-page v-model="isLoading" :can-cancel="true"></b-loading>
     <div class="box">
       <p class="title is-size-3">
-        {{ $t('context') }}
+        {{ $t("CREATE SOMETHING YOU LUV") }}
       </p>
-      <p class="subtitle is-size-7">
-        {{ $t('using') }} {{ version }}
-      </p>
+      <p class="subtitle is-size-7">{{ $t("using") }} {{ version }}</p>
       <div>
-        {{ $t('computed id') }}: <b>{{ rmrkId }}</b>
+        {{ $t("computed id") }}: <b>{{ rmrkId }}</b>
       </div>
       <AccountSelect :label="$i18n.t('Account')" v-model="accountId" />
       <b-field grouped :label="$i18n.t('Name')">
@@ -28,12 +26,10 @@
         <Tooltip :label="$i18n.t('Symbol you want to trade it under')" />
       </b-field>
       <p class="title">
-        {{ $t('content')}}
+        {{ $t("content") }}
       </p>
-      <b-switch v-model="uploadMode"
-        passive-type="is-dark"
-        :rounded="false">
-        {{ uploadMode ? 'Upload through KodaDot' : 'IPFS hash of your content' }}
+      <b-switch v-model="uploadMode" passive-type="is-dark" :rounded="false">
+        {{ uploadMode ? "Upload to LUV NFT" : "IPFS hash of your content" }}
       </b-switch>
       <template v-if="uploadMode">
         <b-field :label="$i18n.t('Description')">
@@ -61,33 +57,32 @@
         :loading="isLoading"
         outlined
       >
-        {{ $t('create collection') }}
+        {{ $t("create collection") }}
       </b-button>
     </div>
   </div>
 </template>
 
 <script lang="ts" >
-import { Component, Prop, Vue, Mixins } from 'vue-property-decorator';
-import { RmrkMint } from '../types';
-import { emptyObject } from '@/utils/empty';
-import AccountSelect from '@/components/shared/AccountSelect.vue';
-import Tooltip from '@/components/shared/Tooltip.vue';
-import MetadataUpload from './MetadataUpload.vue';
-import Connector from '@vue-polkadot/vue-api';
-import exec, { execResultValue, ExecResult } from '@/utils/transactionExecutor';
-import { notificationTypes, showNotification } from '@/utils/notification';
-import PasswordInput from '@/components/shared/PasswordInput.vue';
-import SubscribeMixin from '@/utils/mixins/subscribeMixin';
-import RmrkVersionMixin from '@/utils/mixins/rmrkVersionMixin';
+import { Component, Prop, Vue, Mixins } from "vue-property-decorator";
+import { RmrkMint } from "../types";
+import { emptyObject } from "@/utils/empty";
+import AccountSelect from "@/components/shared/AccountSelect.vue";
+import Tooltip from "@/components/shared/Tooltip.vue";
+import MetadataUpload from "./MetadataUpload.vue";
+import Connector from "@vue-polkadot/vue-api";
+import exec, { execResultValue, ExecResult } from "@/utils/transactionExecutor";
+import { notificationTypes, showNotification } from "@/utils/notification";
+import PasswordInput from "@/components/shared/PasswordInput.vue";
+import SubscribeMixin from "@/utils/mixins/subscribeMixin";
+import RmrkVersionMixin from "@/utils/mixins/rmrkVersionMixin";
 
-import { getInstance, RmrkType } from '../service/RmrkService';
-import { Collection, CollectionMetadata } from '../service/scheme';
-import { pinFile, pinJson, unSanitizeIpfsUrl } from '@/pinata';
-import { decodeAddress } from '@polkadot/keyring';
-import { u8aToHex } from '@polkadot/util';
-import { generateId } from '@/components/rmrk/service/Consolidator'
-
+import { getInstance, RmrkType } from "../service/RmrkService";
+import { Collection, CollectionMetadata } from "../service/scheme";
+import { pinFile, pinJson, unSanitizeIpfsUrl } from "@/pinata";
+import { decodeAddress } from "@polkadot/keyring";
+import { u8aToHex } from "@polkadot/util";
+import { generateId } from "@/components/rmrk/service/Consolidator";
 
 const components = {
   AccountSelect,
@@ -97,29 +92,32 @@ const components = {
 };
 
 @Component({ components })
-export default class CreateCollection extends Mixins(SubscribeMixin, RmrkVersionMixin) {
+export default class CreateCollection extends Mixins(
+  SubscribeMixin,
+  RmrkVersionMixin
+) {
   private rmrkMint: Collection = emptyObject<Collection>();
   private meta: CollectionMetadata = emptyObject<CollectionMetadata>();
-  private accountId: string = '';
+  private accountId: string = "";
   private uploadMode: boolean = true;
   private image: Blob | null = null;
   private isLoading: boolean = false;
-  private password: string = '';
+  private password: string = "";
 
   get rmrkId(): string {
-    return generateId(this.accountId, this.rmrkMint?.symbol || '')
+    return generateId(this.accountId, this.rmrkMint?.symbol || "");
   }
 
   get accountIdToPubKey() {
-    return (this.accountId && u8aToHex(decodeAddress(this.accountId))) || '';
+    return (this.accountId && u8aToHex(decodeAddress(this.accountId))) || "";
   }
 
   private generateId(pubkey: string): string {
     return (
       pubkey?.substr(2, 10) +
       pubkey?.substring(pubkey.length - 8) +
-      '-' +
-      (this.rmrkMint?.symbol || '')
+      "-" +
+      (this.rmrkMint?.symbol || "")
     ).toUpperCase();
   }
 
@@ -135,7 +133,7 @@ export default class CreateCollection extends Mixins(SubscribeMixin, RmrkVersion
       version: this.version,
       issuer: this.accountId,
       metadata: unSanitizeIpfsUrl(this.rmrkMint?.metadata),
-      id: this.rmrkId
+      id: this.rmrkId,
     };
 
     return mint;
@@ -143,13 +141,13 @@ export default class CreateCollection extends Mixins(SubscribeMixin, RmrkVersion
 
   public async constructMeta() {
     if (!this.image) {
-      throw new ReferenceError('No file found!');
+      throw new ReferenceError("No file found!");
     }
 
     this.meta = {
       ...this.meta,
       attributes: [],
-      external_url: `https://rmrk.app/registry/${this.rmrkId}`
+      external_url: `https://rmrk.app/registry/${this.rmrkId}`,
     };
 
     // TODO: upload image to IPFS
@@ -175,38 +173,76 @@ export default class CreateCollection extends Mixins(SubscribeMixin, RmrkVersion
       JSON.stringify(mint)
     )}`;
     try {
-      showNotification(mintString)
-      console.log('submit', mintString);
-      const tx = await exec(this.accountId, this.password, api.tx.system.remark, [
-        mintString
-      ], async (result) => {
-        console.log(`Current status is`, result);
-        if (result.status.isFinalized) {
-          console.log(`finalized status is`, result);
-          console.log(`Transaction finalized at blockHash ${result.status.asFinalized}`);
-          execResultValue(tx)
-          const header = await api.rpc.chain.getHeader(result.status.asFinalized);
-          const persisted = await rmrkService?.resolve(mintString, this.accountId, header.number.toString());
-          console.log('SAVED', persisted?._id);
-          showNotification(`[TEXTILE] ${persisted?._id}`, notificationTypes.success)
-          this.isLoading = false;
+      showNotification(mintString);
+      console.log("submit", mintString);
+      const tx = await exec(
+        this.accountId,
+        this.password,
+        api.tx.system.remark,
+        [mintString],
+        async (result) => {
+          console.log(`Current status is`, result);
+          if (result.status.isFinalized) {
+            console.log(`finalized status is`, result);
+            console.log(
+              `Transaction finalized at blockHash ${result.status.asFinalized}`
+            );
+            execResultValue(tx);
+            const header = await api.rpc.chain.getHeader(
+              result.status.asFinalized
+            );
+            const persisted = await rmrkService?.resolve(
+              mintString,
+              this.accountId,
+              header.number.toString()
+            );
+            console.log("SAVED", persisted?._id);
+            showNotification(
+              `[TEXTILE] ${persisted?._id}`,
+              notificationTypes.success
+            );
+            this.isLoading = false;
+          }
         }
-      });
-      console.warn('TX IN', tx);
-      showNotification(`[CHAIN] Waiting to finalize block and save to TEXTILE`)
-
+      );
+      console.warn("TX IN", tx);
+      showNotification(`[CHAIN] Waiting to finalize block and save to TEXTILE`);
     } catch (e) {
-      showNotification(`[ERR] ${e}`, notificationTypes.danger)
+      showNotification(`[ERR] ${e}`, notificationTypes.danger);
       console.error(e);
       this.isLoading = false;
     }
-
-
   }
 
   private upload(data: File) {
-    console.log('upload', data.name);
+    console.log("upload", data.name);
     this.image = data;
   }
 }
 </script>
+<style>
+.box {
+  background-color: #bfbfcc;
+}
+.button.is-primary {
+  background-color: #beef00 !important;
+  border-color: transparent;
+  color: #000;
+}
+.switch input[type="checkbox"]:checked + .check {
+  background-color: #beef00 !important;
+}
+.file.is-primary .file-cta {
+  background-color: #beef00;
+  border-color: transparent;
+  color: #000;
+}
+.button.is-primary.is-outlined[disabled],
+fieldset[disabled] .button.is-primary.is-outlined {
+  background-color: white !important;
+  border-color: #beef00;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #000;
+}
+</style>
