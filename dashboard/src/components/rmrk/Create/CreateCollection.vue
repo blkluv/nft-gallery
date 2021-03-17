@@ -51,13 +51,14 @@
       <PasswordInput v-model="password" :account="accountId" />
       <b-button
         type="is-primary"
-        icon-left="paper-plane"
         @click="submit"
         :disabled="disabled"
         :loading="isLoading"
         outlined
       >
-        {{ $t("create collection") }}
+        <img src="@/assets/plane_dark.png" alt="" class="ico-plan" />{{
+          $t("create collection")
+        }}
       </b-button>
     </div>
   </div>
@@ -220,7 +221,7 @@ export default class CreateCollection extends Mixins(
   }
 }
 </script>
-<style>
+<style lang= "scss">
 .box {
   background-color: #bfbfcc;
 }
@@ -244,5 +245,14 @@ fieldset[disabled] .button.is-primary.is-outlined {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #000;
+  span {
+    margin-left: 10px;
+  }
+}
+.ico-plan {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 5px;
 }
 </style>
