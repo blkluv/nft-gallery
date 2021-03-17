@@ -2,16 +2,15 @@
   <div>
     <b-loading is-full-page v-model="isLoading" :can-cancel="true"></b-loading>
     <div class="box">
-      <p class="title is-size-3">
+      <p class="title is-size-3" style="text-align:center">
         {{ $t("CREATE SOMETHING YOU LUV") }}
       </p>
-      <p class="subtitle is-size-7">{{ $t("using") }} {{ version }}</p>
       <div>
         {{ $t("computed id") }}: <b>{{ rmrkId }}</b>
       </div>
       <AccountSelect :label="$i18n.t('Account')" v-model="accountId" />
-      <b-field grouped :label="$i18n.t('Name')">
-        <b-input v-model="rmrkMint.name" expanded></b-input>
+      <b-field grouped :label="$i18n.t('Name')" >
+        <b-input v-model="rmrkMint.name" expanded placeholder="e.g Redeemable ticket for entry"></b-input>
         <Tooltip :label="$i18n.t('Owner address of minted art')" />
       </b-field>
       <b-field :label="$i18n.t('Maximum NFTs in collection')">
@@ -37,11 +36,12 @@
             v-model="meta.description"
             maxlength="200"
             type="textarea"
+            placeholder="e.g After perchasing your ticket will be located inside your digital wallet"
           ></b-input>
         </b-field>
         <MetadataUpload v-model="image" />
         <b-field :label="$i18n.t('Multimedia data')">
-          <b-input v-model="meta.image_data"></b-input>
+          <b-input v-model="meta.image_data" placeholder='Change this section to say "PNG,GIF,WEBP,MP4 or MP3,Max 30m'></b-input>
         </b-field>
       </template>
 

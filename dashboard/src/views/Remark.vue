@@ -38,6 +38,9 @@ export default class Remark extends Vue {
   color: #000 !important;
   font-family: 'Archivo', sans-serif !important;
 }
+.tabs.is-toggle li a{
+  background-color: white;
+}
 .b-tabs .tab-content {
   padding: 1rem 0;
 }
