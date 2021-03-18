@@ -31,7 +31,7 @@
               </div>
 
               <div class="card-content">
-                <p v-if="!isLoading" class="title is-4 has-text-centered">
+                <p v-if="!isLoading" class="title is-4">
                   <router-link
                     :to="{ name: 'nftDetail', params: { id: nft.id } }"
                   >
@@ -41,12 +41,15 @@
                 <div class="collectible-card__price-item-container">
                   <div>
                     <p class="collectible-card__price-text">
-                      List 3.4
+                      List price:&nbsp;&nbsp;&nbsp;0.258<span class="eth-symbol" style="font-size: 15px"
+                          >Ξ</span
+                        >
+                        ($<span>450</span>)
                     </p>
                   </div>
                   <div>
                     <p class="collectible-card__price-text">
-                      Current offer 1.4</a>
+                      Current offer: $<span>400</span></a>
                     </p>
                   </div>
                 </div>
