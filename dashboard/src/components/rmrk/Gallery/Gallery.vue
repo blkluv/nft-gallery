@@ -49,7 +49,10 @@
                   </div>
                   <div>
                     <p class="collectible-card__price-text">
-                      Current offer: $<span>400</span></a>
+                      Current offer:&nbsp;&nbsp;&nbsp;0.11<span class="eth-symbol" style="font-size: 15px"
+                          >Ξ</span
+                        >
+                        ($<span>198</span>)</a>
                     </p>
                   </div>
                 </div>
@@ -102,7 +105,7 @@ export default class Gallery extends Vue {
 </script>
 <style lang="scss" scoped>
 .card.nft-card {
-  background-color: #bfbfcc;
+  background-color: white;
   a,
   p,
   span,
