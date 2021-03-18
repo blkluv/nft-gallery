@@ -63,8 +63,7 @@ export default class GalleryCard extends Vue {
   cursor: pointer;
 }
 .collectible-card__price-item-container {
-    display: -ms-flexbox;
-    display: flex;
+    display: block;
     padding-top: 8px;
 }
 .collectible-card__price-item {
@@ -94,7 +93,6 @@ export default class GalleryCard extends Vue {
     padding-left: 2px;
     color: #005c3a;
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 85px;
 }
