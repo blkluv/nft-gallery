@@ -123,4 +123,15 @@ export default class Gallery extends Vue {
   }
 }
 </script>
-
+<style lang="scss" scoped>
+.card.nft-card {
+  background-color: #bfbfcc;
+  a,
+  p,
+  span,
+  div {
+    color: white;
+    font-family: "Archivo", sans-serif !important;
+  }
+}
+</style>
