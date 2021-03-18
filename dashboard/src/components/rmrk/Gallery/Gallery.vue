@@ -31,6 +31,13 @@
               </div>
 
               <div class="card-content">
+                 <p v-if="!isLoading" class="title is-4 has-text-centered">
+                  <router-link
+                    :to="{ name: 'nftDetail', params: { id: nft.id } }"
+                  >
+                    {{ nft.name }}
+                  </router-link>
+                </p>
                 <div class="collectible-card__price-item-container">
                   <div class="collectible-card__price-item">
                     <a
@@ -50,33 +57,10 @@
                         ($<span>450</span>)
                       </div></a
                     >
-                    <p class="collectible-card__price-text">List price</p>
-                  </div>
-                  <div class="collectible-card__price-item">
-                    <a
-                      class="collectible-card__price-number"
-                      href="/artwork-v2/eight-phoenix-16158"
-                      ><span>0.11</span
-                      ><span class="eth-symbol" style="font-size: 15px">Ξ</span>
-                      ($<span>198</span>)</a
-                    >
-                    <p class="collectible-card__price-text">
-                      Current offer by<a
-                        class="collectible-card__price-username"
-                        href="/erosandagape"
-                        >@erosandagape</a
-                      >
-                    </p>
+                    <p class="collectible-card__price-text">List price: $<span>400</span></p>
                   </div>
                 </div>
-                <hr />
-                <p v-if="!isLoading" class="title is-4 has-text-centered">
-                  <router-link
-                    :to="{ name: 'nftDetail', params: { id: nft.id } }"
-                  >
-                    {{ nft.name }}
-                  </router-link>
-                </p>
+               
                 <b-skeleton :active="isLoading"> </b-skeleton>
               </div>
             </router-link>
@@ -130,7 +114,7 @@ export default class Gallery extends Vue {
   p,
   span,
   div {
-    color: white;
+    color: black;
     font-family: "Archivo", sans-serif !important;
   }
 }

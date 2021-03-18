@@ -53,6 +53,7 @@ export default class GalleryCard extends Vue {
 }
 .card-content{
   height: 100%;
+  padding:1.5rem 0;
 }
 .nft-card__skeleton {
   display: flex;
@@ -67,7 +68,7 @@ export default class GalleryCard extends Vue {
     padding-top: 8px;
 }
 .collectible-card__price-item {
-    width: 50%;
+    width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -108,5 +109,8 @@ hr {
 }
 a {
   color: grey;
+}
+.collectible-card__price-text {
+  color: rebeccapurple;
 }
 </style>
