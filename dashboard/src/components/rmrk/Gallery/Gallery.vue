@@ -41,20 +41,17 @@
                 <div class="collectible-card__price-item-container">
                   <div>
                     <p class="collectible-card__price-text">
-                      List price:&nbsp;&nbsp;&nbsp;{{nft.price | formatBalance(decimals, unit)}}<span class="eth-symbol" style="font-size: 15px"
-                          >Ξ</span
-                        >
-                        (<span>450 USD</span>)
+                     {{nft.price | formatBalance(decimals, unit)}}
                     </p>
                   </div>
-                  <div>
+                  <!-- <div>
                     <p class="collectible-card__price-text">
                       Current offer:&nbsp;&nbsp;&nbsp;0.11<span class="eth-symbol" style="font-size: 15px"
                           >Ξ</span
                         >
                         ($<span>198</span>)</a>
                     </p>
-                  </div>
+                  </div> -->
                 </div>
 
                 <b-skeleton :active="isLoading"> </b-skeleton>
@@ -126,6 +123,8 @@ export default class Gallery extends Vue {
   }
   p {
     margin-bottom: unset;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 }
 </style>
