@@ -167,6 +167,7 @@ export default class GalleryItem extends Vue {
           t => t === mediaType
         );
       }
+      console.log('Oops:',this.nft)
     } catch (e) {
       showNotification(`${e}`, notificationTypes.danger);
       console.warn(e);

@@ -2,7 +2,7 @@
   <div>
     <b-loading is-full-page v-model="isLoading" :can-cancel="true"></b-loading>
     <div class="box">
-      <p class="title is-size-3" style="text-align: center;color:white">
+      <p class="title is-size-3" style="text-align: center; color: white">
         {{ $t("CREATE SOMETHING YOU LUV") }}
       </p>
       <AccountSelect :label="$i18n.t('Account')" v-model="accountId" />
@@ -59,7 +59,7 @@
         :disabled="disabled"
         :loading="isLoading"
         outlined
-        style="width:167px"
+        style="width: 167px"
       >
         <img src="@/assets/plane_dark.png" alt="" class="ico-plan" />{{
           $t("create collection")
@@ -267,9 +267,15 @@ fieldset[disabled] .button.is-primary.is-outlined {
 .control {
   .input {
     font-family: "Archivo", sans-serif !important;
+    &:focus{
+    border-color: #beef00;
+    }
   }
   .textarea {
     font-family: "Archivo", sans-serif !important;
+    &:focus {
+      border-color: #beef00;
+    }
   }
 }
 .b-numberinput input[type="number"] {
@@ -280,12 +286,13 @@ fieldset[disabled] .button.is-primary.is-outlined {
   color: #beef00;
   font-family: "Archivo", sans-serif !important;
 }
-.file.is-primary:hover .file-cta, .file.is-primary.is-hovered .file-cta {
-    background-color: #beef00;
-    border-color: transparent;
-    color: #fff;
+.file.is-primary:hover .file-cta,
+.file.is-primary.is-hovered .file-cta {
+  background-color: #beef00;
+  border-color: transparent;
+  color: #fff;
 }
-.switch:not(.has-left-label) .control-label{
+.switch:not(.has-left-label) .control-label {
   color: white;
 }
 </style>

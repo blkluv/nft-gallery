@@ -41,10 +41,10 @@
                 <div class="collectible-card__price-item-container">
                   <div>
                     <p class="collectible-card__price-text">
-                      List price:&nbsp;&nbsp;&nbsp;0.258<span class="eth-symbol" style="font-size: 15px"
+                      List price:&nbsp;&nbsp;&nbsp;{{nft.price | formatBalance(decimals, unit)}}<span class="eth-symbol" style="font-size: 15px"
                           >Ξ</span
                         >
-                        ($<span>450</span>)
+                        (<span>450 USD</span>)
                     </p>
                   </div>
                   <div>
@@ -98,8 +98,19 @@ export default class Gallery extends Vue {
     } catch (e) {
       console.warn(e);
     }
-
+    console.log('nfts:',this.nfts)
     this.isLoading = false;
+  }
+  get chainProperties() {
+    return this.$store.getters.getChainProperties;
+  }
+
+  get decimals(): number {
+    return this.chainProperties.tokenDecimals
+  }
+
+  get unit(): string {
+    return this.chainProperties.tokenSymbol
   }
 }
 </script>
